@@ -19,6 +19,7 @@ namespace i5.VirtualAgents.BehaviourTrees
         public BehaviourTreeAsset Tree;
 
         public NodesOverwriteData nodesOverwriteData = new NodesOverwriteData();
+		public SerializationDataContainer blackBoard = new SerializationDataContainer();
         private void Awake()
         {
             executingAgent = GetComponent<Agent>();
