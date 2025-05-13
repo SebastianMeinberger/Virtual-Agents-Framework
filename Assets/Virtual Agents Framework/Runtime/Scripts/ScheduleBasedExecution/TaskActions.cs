@@ -126,7 +126,7 @@ namespace i5.VirtualAgents.ScheduleBasedExecution
         public AgentBaseTask GoToAndPickUp(GameObject destinationObject, int priority = 0, SocketId bodyAttachPoint = SocketId.RightHand, float minDistance = 0.3f)
         {
             AgentMovementTask movementTask = new AgentMovementTask(destinationObject, default, true);
-            movementTask.MinDistance = minDistance;
+            movementTask.TargetDistance = minDistance;
             AgentPickUpTask pickUpTask = new AgentPickUpTask(destinationObject, bodyAttachPoint);
 
             TaskBundle PickUpBundle = new TaskBundle();

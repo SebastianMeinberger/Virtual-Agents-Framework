@@ -19,7 +19,12 @@ namespace i5.VirtualAgents.AgentTasks
 		/// <summary>
 		/// Minimum distance of the agent to the target so that the task is considered finished
 		/// </summary>
-		public float MinDistance { get; set; } = 0.01f;
+		public float TargetDistance { get; set; } = 0.01f;
+
+		/// <summary>
+		/// If yes, the agent will move away from the target if it is closer than the target distance
+		/// </summary>
+		public bool EnforceTargetDistance { get; protected set; } = false;
 
 		/// <summary>
 		/// Number of seconds spent on current path
@@ -51,6 +56,11 @@ namespace i5.VirtualAgents.AgentTasks
 		/// Number of seconds after which the path will be recalculated
 		/// </summary>
 		public float PathUpdateInterval { get; set; } = 1f;
+
+		// The exact position the agent moves towards, with no regard to minimum distance.
+		private Vector3 proxyTarget;
+
+		private bool pathIsBeingCalculated = false;
 
 		public AgentMovementTask()
 		{
@@ -98,7 +108,7 @@ namespace i5.VirtualAgents.AgentTasks
                 FinishTaskAsFailed();
 				return;
 			}
-
+			proxyTarget = DestinationObject == null ? Destination : DestinationObject.transform.position;
 			StartMovement();
 		}
 
@@ -107,6 +117,10 @@ namespace i5.VirtualAgents.AgentTasks
 		/// </summary>
 		public override TaskState EvaluateTaskState()
 		{
+			if(pathIsBeingCalculated && !navMeshAgent.pathPending)
+			{
+				OnPathCalculated();
+			}
 			// we only need to recalculate the path if we are following a GameObject
 			if (followGameObject)
 			{
@@ -140,25 +154,42 @@ namespace i5.VirtualAgents.AgentTasks
 					return TaskState.Failure; // The navmesh agent couldn't generate a complete and valid path
 				}
 			}
-			if (navMeshAgent.remainingDistance < MinDistance)
+
+			if (navMeshAgent.remainingDistance < TargetDistance)
 			{
 				return TaskState.Success;
 			}
-			// The agent moves on a valid path and hasn't reached its destination yet. Give all control about movement und rotation to the navmesh agent
-            navMeshAgent.isStopped = false;
+
 			return TaskState.Running;
+		}
 
-
+		private void OnPathCalculated()
+		{
+			pathIsBeingCalculated = false;
+			// Give all control about movement und rotation to the navmesh agent
+			navMeshAgent.isStopped = false;
+			if(navMeshAgent.remainingDistance < TargetDistance && EnforceTargetDistance)
+			{
+				Vector3 target = DestinationObject != null ? DestinationObject.transform.position : Destination;
+				Vector3 position = executingAgent.transform.position;
+				Vector3 direction = (target - position);
+				direction.y = 0;
+				direction.Normalize();
+				proxyTarget = position - direction * TargetDistance;
+				TargetDistance = 0.1f;
+				StartMovement();
+			}
 		}
 
 		// Sets the destination on the NavMesh and lets the agent walk on the NavMesh
 		private void StartMovement()
 		{
+			pathIsBeingCalculated = true;
 			// Give all control about the movement to the navmesh agent
 			navMeshAgent.enabled = true;
 			navMeshAgent.updatePosition = true;
 			navMeshAgent.updateRotation = true;
-			if (!navMeshAgent.SetDestination(DestinationObject != null ? DestinationObject.transform.position : Destination))
+			if (!navMeshAgent.SetDestination(proxyTarget))
 			{
 				FinishTaskAsFailed();
 				return;
@@ -195,6 +226,8 @@ namespace i5.VirtualAgents.AgentTasks
 			serializer.AddSerializedData("Destination", Destination);
 			serializer.AddSerializedData("Target Speed", TargetSpeed);
             serializer.AddSerializedData("Follow GameObject?", followGameObject);
+			serializer.AddSerializedData("Target Distance", TargetDistance);
+			serializer.AddSerializedData("Enforce Target Distance?", EnforceTargetDistance);
         }
 
 		public void Deserialize(SerializationDataContainer serializer)
@@ -209,6 +242,8 @@ namespace i5.VirtualAgents.AgentTasks
 			Destination = serializer.GetSerializedVector("Destination");
 			TargetSpeed = serializer.GetSerializedFloat("Target Speed");
             followGameObject = serializer.GetSerializedBool("Follow GameObject?");
+			TargetDistance = serializer.GetSerializedFloat("Target Distance");
+			EnforceTargetDistance = serializer.GetSerializedBool("Enforce Target Distance?");
 		}
 
 		/// <summary>
