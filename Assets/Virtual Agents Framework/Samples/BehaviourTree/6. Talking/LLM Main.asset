@@ -1,0 +1,613 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8247594098236495197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: WriteBlackboardData
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Answer
+      - Key: Target
+        Value: Answer
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.WriteBlackboardData
+  Guid: db9eed32d9f4feb45ad3c9f34c023026
+  Position: {x: -330, y: 250}
+  Children:
+  - {fileID: -1914533364208691484}
+--- !u!114 &-7131508445762783305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: BehaviourTreeTask
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data: []
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data:
+      - Key: Tree
+        Value: {fileID: 11400000, guid: ede6a3dd925dee8d8bea0341796a8686, type: 2}
+    serializedQuaternions:
+      data: []
+    serializationOrder: 09000000
+  serializedObjectType: i5.VirtualAgents.AgentTasks.BehaviourTreeTask
+  Guid: bb0fae6ba8d5865ddb17685731469c05
+  Position: {x: -110, y: 250}
+  Children: []
+--- !u!114 &-6155271215011246281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: WriteBlackboardData
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Input
+      - Key: Target
+        Value: Input
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.WriteBlackboardData
+  Guid: f442872673caa9918a1865aa2fd7984c
+  Position: {x: 110, y: 250}
+  Children:
+  - {fileID: 6742243247309472267}
+--- !u!114 &-3782546521420142165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: BehaviourTreeTask
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data: []
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data:
+      - Key: Tree
+        Value: {fileID: 11400000, guid: ede6a3dd925dee8d8bea0341796a8686, type: 2}
+    serializedQuaternions:
+      data: []
+    serializationOrder: 09000000
+  serializedObjectType: i5.VirtualAgents.AgentTasks.BehaviourTreeTask
+  Guid: 33fec2a1603745a61990a65cdea9c358
+  Position: {x: 576.09735, y: 250}
+  Children: []
+--- !u!114 &-1914533364208691484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: WriteBlackboardData
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Own ID
+      - Key: Target
+        Value: Own ID
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.WriteBlackboardData
+  Guid: 9e9f628ad251bcaabb4f801dd38dbbf3
+  Position: {x: -330, y: 375}
+  Children:
+  - {fileID: 2442347605874180202}
+--- !u!114 &-1801688812614705192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: WriteBlackboardData
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Answer
+      - Key: Target
+        Value: Answer
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.WriteBlackboardData
+  Guid: d274a3c494760274d84cda65a492455f
+  Position: {x: 330, y: 250}
+  Children:
+  - {fileID: 335505350719235751}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3430e2b3fb448544d99baab57de75da2, type: 3}
+  m_Name: LLM Main
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 5476829473326169496}
+  Nodes:
+  - {fileID: 5476829473326169496}
+  - {fileID: 457808024047104502}
+  - {fileID: -7131508445762783305}
+  - {fileID: 2442347605874180202}
+  - {fileID: -8247594098236495197}
+  - {fileID: -1914533364208691484}
+  - {fileID: 6742243247309472267}
+  - {fileID: -6155271215011246281}
+  - {fileID: 5901336822245473545}
+  - {fileID: 6528765082739549132}
+  - {fileID: 335505350719235751}
+  - {fileID: -1801688812614705192}
+  - {fileID: -3782546521420142165}
+--- !u!114 &335505350719235751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: ReadFromBlackboard
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Answer
+      - Key: Target
+        Value: Message
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.ReadFromBlackboard
+  Guid: 145a0046bd0e714b79f82e50f65c17d2
+  Position: {x: 330, y: 375}
+  Children:
+  - {fileID: 6528765082739549132}
+--- !u!114 &457808024047104502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data: []
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 
+  serializedObjectType: i5.VirtualAgents.BehaviourTrees.SequencerNode
+  Guid: c7c671006bae4b4c2a86d0bcfe9052d0
+  Position: {x: 0, y: 125}
+  Children:
+  - {fileID: -8247594098236495197}
+  - {fileID: -7131508445762783305}
+  - {fileID: -6155271215011246281}
+  - {fileID: -1801688812614705192}
+  - {fileID: -3782546521420142165}
+--- !u!114 &2442347605874180202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: AgentLLMTask
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Message
+        Value: Greet the student and state your purpose. Then instruct them to open
+          the site plan.meinberger.org in their browser and ask them to confirm when
+          they succeeded. Once they did that, explain how to create a new project.
+      - Key: Answer
+        Value: 
+      - Key: Instructions
+        Value: 
+      - Key: Previous ID
+        Value: 
+      - Key: Own ID
+        Value: 
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000020000000200000002000000
+  serializedObjectType: i5.VirtualAgents.AgentTasks.AgentLLMTask
+  Guid: 9992741b636b45628942d1064bd3feb7
+  Position: {x: -330, y: 500}
+  Children: []
+--- !u!114 &5476829473326169496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data: []
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 
+  serializedObjectType: i5.VirtualAgents.BehaviourTrees.Visual.RootNode
+  Guid: 3041fafc727cfc1b78d20e1fa8e15657
+  Position: {x: 0, y: -175}
+  Children:
+  - {fileID: 457808024047104502}
+--- !u!114 &5901336822245473545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: AgentLLMTask
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Message
+        Value: 
+      - Key: Answer
+        Value: 
+      - Key: Instructions
+        Value: 
+      - Key: Previous ID
+        Value: 
+      - Key: Own ID
+        Value: 
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000020000000200000002000000
+  serializedObjectType: i5.VirtualAgents.AgentTasks.AgentLLMTask
+  Guid: 07360776db0874bacbd0005b34099ea3
+  Position: {x: 330, y: 625}
+  Children: []
+--- !u!114 &6528765082739549132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: ReadFromBlackboard
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Source
+        Value: Own ID
+      - Key: Target
+        Value: Previous ID
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 0200000002000000
+  serializedObjectType: i5.VirtualAgents.ReadFromBlackboard
+  Guid: d8f166ed49e23b943b5a96cf5f9547a8
+  Position: {x: 330, y: 500}
+  Children:
+  - {fileID: 5901336822245473545}
+--- !u!114 &6742243247309472267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: UserInput
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data: []
+    serializedStrings:
+      data:
+      - Key: Input
+        Value: 
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 02000000
+  serializedObjectType: i5.VirtualAgents.AgentTasks.UserInput
+  Guid: 42d84e0aa2d40f9fdb9b2b628081176e
+  Position: {x: 110, y: 375}
+  Children: []
