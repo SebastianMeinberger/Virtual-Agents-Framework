@@ -22,7 +22,7 @@ namespace i5.VirtualAgents.AgentTasks
         public override void StartExecution(Agent executingAgent)
         {
 			letterIndex = 0;
-			textMesh = Object.FindObjectOfType<TextMeshProUGUI>();
+			textMesh = GameObject.Find("Agent Text").GetComponent<TextMeshProUGUI>();
 			if(!letterByLetter)
 			{
 				textMesh.text = text;
