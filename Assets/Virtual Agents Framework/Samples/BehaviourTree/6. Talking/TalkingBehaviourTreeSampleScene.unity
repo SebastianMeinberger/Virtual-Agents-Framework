@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1417c8a0e226d468b3fdb8852704c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tree: {fileID: 11400000, guid: ede6a3dd925dee8d8bea0341796a8686, type: 2}
+  Tree: {fileID: 11400000, guid: a4d1166204e8f3990a11063acb827098, type: 2}
   nodesOverwriteData:
     data:
     - Key: a48c80c7c6597a84a90ad868bc335516
@@ -1559,6 +1559,120 @@ MonoBehaviour:
         serializedQuaternions:
           data: []
         serializationOrder: 0000000000000000000000000000000000000000
+    - Key: bb0fae6ba8d5865ddb17685731469c05
+      Value:
+        serializedVectors:
+          data: []
+        serializedFloats:
+          data: []
+        serializedStrings:
+          data: []
+        serializedInts:
+          data: []
+        serializedGameobjects:
+          data: []
+        serializedBools:
+          data: []
+        serializedAudioClips:
+          data: []
+        serializedAudioSources:
+          data: []
+        serializedListFloats:
+          data: []
+        serializedTrees:
+          data:
+          - Key: Tree
+            Value: {fileID: 11400000, guid: ede6a3dd925dee8d8bea0341796a8686, type: 2}
+        serializedQuaternions:
+          data: []
+        serializationOrder: 0000000000000000000000000000000000000000
+    - Key: f442872673caa9918a1865aa2fd7984c
+      Value:
+        serializedVectors:
+          data: []
+        serializedFloats:
+          data: []
+        serializedStrings:
+          data:
+          - Key: Source
+            Value: Input
+          - Key: Target
+            Value: Input
+        serializedInts:
+          data: []
+        serializedGameobjects:
+          data: []
+        serializedBools:
+          data: []
+        serializedAudioClips:
+          data: []
+        serializedAudioSources:
+          data: []
+        serializedListFloats:
+          data: []
+        serializedTrees:
+          data: []
+        serializedQuaternions:
+          data: []
+        serializationOrder: 0000000000000000000000000000000000000000
+    - Key: d274a3c494760274d84cda65a492455f
+      Value:
+        serializedVectors:
+          data: []
+        serializedFloats:
+          data: []
+        serializedStrings:
+          data:
+          - Key: Source
+            Value: Answer
+          - Key: Target
+            Value: Answer
+        serializedInts:
+          data: []
+        serializedGameobjects:
+          data: []
+        serializedBools:
+          data: []
+        serializedAudioClips:
+          data: []
+        serializedAudioSources:
+          data: []
+        serializedListFloats:
+          data: []
+        serializedTrees:
+          data: []
+        serializedQuaternions:
+          data: []
+        serializationOrder: 0000000000000000000000000000000000000000
+    - Key: 145a0046bd0e714b79f82e50f65c17d2
+      Value:
+        serializedVectors:
+          data: []
+        serializedFloats:
+          data: []
+        serializedStrings:
+          data:
+          - Key: Source
+            Value: Input
+          - Key: Target
+            Value: Message
+        serializedInts:
+          data: []
+        serializedGameobjects:
+          data: []
+        serializedBools:
+          data: []
+        serializedAudioClips:
+          data: []
+        serializedAudioSources:
+          data: []
+        serializedListFloats:
+          data: []
+        serializedTrees:
+          data: []
+        serializedQuaternions:
+          data: []
+        serializationOrder: 0000000000000000000000000000000000000000
   blackBoard:
     serializedVectors:
       data: []
@@ -2082,7 +2196,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.11000001
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: bb67c9ce7dce020278d0fc4c992e09a7, type: 2}
   m_BuildHeightMesh: 0
