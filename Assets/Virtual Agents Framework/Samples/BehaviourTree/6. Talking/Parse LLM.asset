@@ -575,7 +575,7 @@ MonoBehaviour:
   Guid: f09c55ae37d135ec7a0f9f3b44e8c6cc
   Position: {x: 110, y: 500}
   Children:
-  - {fileID: 1303782326596149635}
+  - {fileID: 1830386305193206285}
   - {fileID: -8501416647481261804}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -614,6 +614,7 @@ MonoBehaviour:
   - {fileID: -8501416647481261804}
   - {fileID: 4242282615745220891}
   - {fileID: -2606176584280278731}
+  - {fileID: 1830386305193206285}
 --- !u!114 &730706765364527499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,9 +751,52 @@ MonoBehaviour:
     serializationOrder: 0200000002000000
   serializedObjectType: i5.VirtualAgents.ReadFromBlackboard
   Guid: dcdce63cb6b5154b2acec115b816acc8
-  Position: {x: -330, y: 625}
+  Position: {x: -330, y: 750}
   Children:
   - {fileID: 4603234118200562331}
+--- !u!114 &1830386305193206285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273b94479bfe09f49a9b751d7f675d69, type: 3}
+  m_Name: SlowDownNode
+  m_EditorClassIdentifier: 
+  Data:
+    serializedVectors:
+      data: []
+    serializedFloats:
+      data:
+      - Key: Wait time
+        Value: 0.02
+    serializedStrings:
+      data: []
+    serializedInts:
+      data: []
+    serializedGameobjects:
+      data: []
+    serializedBools:
+      data: []
+    serializedAudioClips:
+      data: []
+    serializedAudioSources:
+      data: []
+    serializedListFloats:
+      data: []
+    serializedTrees:
+      data: []
+    serializedQuaternions:
+      data: []
+    serializationOrder: 01000000
+  serializedObjectType: i5.VirtualAgents.BehaviourTrees.SlowDownNode
+  Guid: 99eece1bcccd960dea4c566e649203a2
+  Position: {x: -330, y: 625}
+  Children:
+  - {fileID: 1303782326596149635}
 --- !u!114 &3382433685169996820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,7 +998,7 @@ MonoBehaviour:
     serializedBools:
       data:
       - Key: Letter by letter
-        Value: 0
+        Value: 1
     serializedAudioClips:
       data: []
     serializedAudioSources:
@@ -968,7 +1012,7 @@ MonoBehaviour:
     serializationOrder: 0200000005000000
   serializedObjectType: i5.VirtualAgents.AgentTasks.AgentTalkTask
   Guid: fb11d06c0ffb320b7b1be5037c2ff295
-  Position: {x: -330, y: 750}
+  Position: {x: -330, y: 875}
   Children: []
 --- !u!114 &5650981473674202357
 MonoBehaviour:
