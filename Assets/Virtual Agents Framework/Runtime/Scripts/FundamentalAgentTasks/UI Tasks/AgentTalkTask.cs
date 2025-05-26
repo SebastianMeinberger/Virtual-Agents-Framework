@@ -33,14 +33,14 @@ namespace i5.VirtualAgents.AgentTasks
 
         public override TaskState EvaluateTaskState()
         {
-            textMesh.text += text[letterIndex];
-			letterIndex++;
 			if(letterIndex >= text.Length)
 			{
 				return TaskState.Success;
 			}
 			else
 			{
+				textMesh.text += text[letterIndex];
+				letterIndex++;
 				return TaskState.Running;
 			}
         }
