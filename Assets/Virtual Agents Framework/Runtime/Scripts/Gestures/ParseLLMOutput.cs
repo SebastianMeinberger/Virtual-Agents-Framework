@@ -40,11 +40,6 @@ namespace i5.VirtualAgents.AgentTasks
                 else if (c == '>')
                 {
                     pointTarget = false;
-                    continue;
-                }
-                else if (c == '.' && !pointTarget)
-                {
-                    textStack += c;
                     break;
                 }
 
