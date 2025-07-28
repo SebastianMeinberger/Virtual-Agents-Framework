@@ -19,7 +19,7 @@ namespace i5.VirtualAgents.AgentTasks
 
         public void Serialize(SerializationDataContainer serializer)
         {
-            serializer.AddSerializedData("Sprite Name",spriteName);
+            serializer.AddSerializedData("Sprite Name", spriteName, "The name of an image that is referenced in one of the provided markdown files.");
         }
 
         public void Deserialize(SerializationDataContainer serializer)
