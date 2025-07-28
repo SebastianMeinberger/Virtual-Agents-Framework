@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor;
 using i5.VirtualAgents.Editor.BehaviourTrees;
+using Codice.Client.Common.TreeGrouper;
+using i5.VirtualAgents.AgentTasks;
+using UnityEngine;
+//using System.Diagnostics;
 
 namespace i5.VirtualAgents.Editor.BehaviourTrees
 {
@@ -25,13 +29,10 @@ namespace i5.VirtualAgents.Editor.BehaviourTrees
                 UnityEngine.Object.DestroyImmediate(editor);
             }
             editor = UnityEditor.Editor.CreateEditor(view.node);
-            IMGUIContainer container = new IMGUIContainer(() => {
-                if (editor.target)
-                {
-                    editor.OnInspectorGUI();
-                }
-            });
-            Add(container);
+            if (editor.target)
+            {
+                ((VisualNodeInspector)editor).OnInspectorGUI(this);
+            }
         }
     }
 }
