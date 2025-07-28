@@ -1,7 +1,10 @@
 using i5.VirtualAgents.BehaviourTrees.Visual;
+using NUnit.Framework;
+using PlasticGui.WorkspaceWindow;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace i5.VirtualAgents.AgentTasks
@@ -34,11 +37,20 @@ namespace i5.VirtualAgents.AgentTasks
     {
         public string Key;
         public T Value;
-
-        public SerializationEntry(string key, T value)
+        public string Description;
+        public SerializationEntry(string key, T value, string description = "")
         {
-            this.Key = key;
-            this.Value = value;
+            Key = key;
+            Value = value;
+            Description = description;
+        }
+
+        public SerializationEntry(SerializationEntry<T> entry)
+        {
+            var constructor = typeof(T).GetConstructor(new Type[] { typeof(T) });
+            Key = entry.Key;
+            Value = constructor != null ? (T)constructor.Invoke(new object[] { (object)entry.Value }) : entry.Value;
+            Description = entry.Description;
         }
     }
 
@@ -50,6 +62,13 @@ namespace i5.VirtualAgents.AgentTasks
     public class SerializationData<T>
     {
         [SerializeField] public List<SerializationEntry<T>> data = new List<SerializationEntry<T>>();
+
+        public SerializationData() { }
+
+        public SerializationData(List<SerializationEntry<T>> copyData)
+        {
+            data = copyData.ConvertAll<SerializationEntry<T>>((SerializationEntry<T> x) => new(x));
+        }
 
         public T Get(string key)
         {
@@ -63,6 +82,19 @@ namespace i5.VirtualAgents.AgentTasks
 
             throw new KeyNotFoundException(key + " has not been deserialize before.");
         }
+
+        public string GetDescription(string key)
+        {
+            foreach (var entry in data)
+            {
+                if (entry.Key == key)
+                {
+                    return entry.Description;
+                }
+            }
+            throw new KeyNotFoundException(key + " has not been deserialized before");
+        }
+
         public void SetValue(string key, T value)
         {
             foreach (var entry in data)
@@ -85,11 +117,11 @@ namespace i5.VirtualAgents.AgentTasks
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <returns>Returns true if key was added, returns false when key was already presents and not added again</returns>
-        public bool Add(string key, T value)
+        public bool Add(string key, T value, string description = "")
         {
             if (KeyExists(key))
                 return false;
-            data.Add(new SerializationEntry<T>(key, value));
+            data.Add(new SerializationEntry<T>(key, value, description));
             return true;
         }
 
@@ -114,31 +146,75 @@ namespace i5.VirtualAgents.AgentTasks
 
     // Since generic types are not serializable, a new type that derives from the generic version while providing it with a concrete type has to be created. 
     [Serializable]
-    public class SerializedVectors : SerializationData<Vector3> { }
+    public class SerializedVectors : SerializationData<Vector3>
+    {
+        public SerializedVectors(List<SerializationEntry<Vector3>> v) : base(v){}
+        public SerializedVectors() : base() { }
+    }
     [Serializable]
-    public class SerializedFloats : SerializationData<float> { }
+    public class SerializedFloats : SerializationData<float>
+    {
+        public SerializedFloats(List<SerializationEntry<float>> v) : base(v) { }
+        public SerializedFloats() : base() { }
+    }
     [Serializable]
-    public class SerializedStrings : SerializationData<string> { }
+    public class SerializedStrings : SerializationData<string>
+    {
+        public SerializedStrings(List<SerializationEntry<string>> v) : base(v) { }
+        public SerializedStrings() : base() { }
+    }
     [Serializable]
-    public class SerializedInts : SerializationData<int> { }
+    public class SerializedInts : SerializationData<int>
+    {
+        public SerializedInts(List<SerializationEntry<int>> v) : base(v) { }
+        public SerializedInts() : base() { }
+    }
     [Serializable]
-    public class SerializedGameObjects : SerializationData<GameObject> { }
+    public class SerializedGameObjects : SerializationData<GameObject>
+    {
+        public SerializedGameObjects(List<SerializationEntry<GameObject>> v) : base(v) { }
+        public SerializedGameObjects() : base() { }
+    }
     [Serializable]
-    public class SerializedBools : SerializationData<bool> { }
+    public class SerializedBools : SerializationData<bool>
+    {
+        public SerializedBools(List<SerializationEntry<bool>> v) : base(v) { }
+        public SerializedBools() : base() { }
+    }
     [Serializable]
-    public class SerializedListFloats : SerializationData<List<float>> { }
+    public class SerializedListFloats : SerializationData<List<float>>
+    {
+        public SerializedListFloats(List<SerializationEntry<List<float>>> v) : base(v) { }
+        public SerializedListFloats() : base() { }
+    }
 
     [Serializable]
-    public class SerializedTrees : SerializationData<BehaviourTreeAsset> { }
+    public class SerializedTrees : SerializationData<BehaviourTreeAsset>
+    {
+        public SerializedTrees(List<SerializationEntry<BehaviourTreeAsset>> v) : base(v) { }
+        public SerializedTrees() : base() { }
+    }
 
     [Serializable]
-    public class SerializedAudioClips : SerializationData<AudioClip> { }
+    public class SerializedAudioClips : SerializationData<AudioClip>
+    {
+        public SerializedAudioClips(List<SerializationEntry<AudioClip>> v) : base(v) { }
+        public SerializedAudioClips() : base() { }
+    }
 
     [Serializable]
-    public class SerializedAudioSources : SerializationData<AudioSource> { }
+    public class SerializedAudioSources : SerializationData<AudioSource>
+    {
+        public SerializedAudioSources(List<SerializationEntry<AudioSource>> v) : base(v) { }
+        public SerializedAudioSources() : base() { }
+    }
 
     [Serializable]
-    public class SerializedQuaternions : SerializationData<Quaternion> { }
+    public class SerializedQuaternions : SerializationData<Quaternion>
+    {
+        public SerializedQuaternions(List<SerializationEntry<Quaternion>> v) : base(v) { }
+        public SerializedQuaternions() : base() { }
+    }
 
     [Serializable]
     public class SerializationDataContainer
@@ -158,16 +234,22 @@ namespace i5.VirtualAgents.AgentTasks
 
         //Saves the order in which the data was serialized. Allows custom inspectors to replicate that order.
         [SerializeField] public List<SerializableType> serializationOrder = new List<SerializableType>();
+        [SerializeField] public List<bool> exposeToLLM = new();
 
         #region Overloads for adding data to the serialization
         private bool add(SerializableType type, bool added)
         {
-            if (added) serializationOrder.Add(type);
+            if (added)
+            {
+                serializationOrder.Add(type);
+                exposeToLLM.Add(true);
+            }
             return added;
         }
-        public bool AddSerializedData(string key, Vector3 value)
+
+        public bool AddSerializedData(string key, Vector3 value, string description = "")
         {
-            return add(SerializableType.VECTOR3,serializedVectors.Add(key,value));
+            return add(SerializableType.VECTOR3, serializedVectors.Add(key, value, description));
         }
 
         public bool AddSerializedData(string key, float value)
@@ -175,24 +257,24 @@ namespace i5.VirtualAgents.AgentTasks
             return add(SerializableType.FLOAT,serializedFloats.Add(key,value));
         }
 
-        public bool AddSerializedData(string key, string value)
+        public bool AddSerializedData(string key, string value, string description = "")
         {
-            return add(SerializableType.STRING,serializedStrings.Add(key,value));
+            return add(SerializableType.STRING,serializedStrings.Add(key,value,description));
         }
 
-        public bool AddSerializedData(string key, int value)
+        public bool AddSerializedData(string key, int value, string description = "")
         {
-            return add(SerializableType.INT,serializedInts.Add(key,value));
+            return add(SerializableType.INT,serializedInts.Add(key,value,description));
         }
 
-        public bool AddSerializedData(string key, GameObject value)
+        public bool AddSerializedData(string key, GameObject value, string description = "")
         {
-            return add(SerializableType.GAMEOBJECT,serializedGameobjects.Add(key,value));
+            return add(SerializableType.GAMEOBJECT,serializedGameobjects.Add(key,value,description));
         }
 
-        public bool AddSerializedData(string key, bool value)
+        public bool AddSerializedData(string key, bool value, string description = "")
         {
-            return add(SerializableType.BOOL,serializedBools.Add(key,value));
+            return add(SerializableType.BOOL,serializedBools.Add(key,value,description));
         }
 
         public bool AddSerializedData(string key, List<float> value)
@@ -219,6 +301,40 @@ namespace i5.VirtualAgents.AgentTasks
         {
             return add(SerializableType.QUATERNION,serializedQuaternions.Add(key,value));
         }
+        #endregion
+
+        #region Overloads for setting serialized data
+
+        public void SetSerializedData(string key, Vector3 value)
+        {
+            serializedVectors.SetValue(key,value);
+        }
+
+        public void SetSerializedData(string key, float value)
+        {
+            serializedFloats.SetValue(key,value);
+        }
+
+        public void SetSerializedData(string key, string value)
+        {
+            serializedStrings.SetValue(key,value);
+        }
+
+        public void SetSerializedData(string key, int value)
+        {
+            serializedInts.SetValue(key,value);
+        }
+
+        public void SetSerializedData(string key, GameObject value)
+        {
+            serializedGameobjects.SetValue(key,value);
+        }
+
+        public void SetSerializedData(string key, bool value)
+        {
+            serializedBools.SetValue(key,value);
+        }
+
         #endregion
 
         #region Overloads for retrieving serialized data
@@ -393,6 +509,42 @@ namespace i5.VirtualAgents.AgentTasks
                 SerializableType.QUATERNION => serializedQuaternions.Get(index).Key,
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        public void SetLLMExposure(string key, bool value)
+        {
+            int counter = 0;
+            int entryIndex = -1;
+            int wrapper(SerializableType type, int index)
+            {
+                string _key = GetKeyByIndex(index, type);
+                if (_key == key)
+                {
+                    entryIndex = counter;
+                }
+                counter++;
+                return 0;
+            }
+            MapOverData(wrapper);
+            exposeToLLM[entryIndex] = value;
+        }
+
+        public bool GetLLMExposure(string key)
+        {
+            int counter = 0;
+            int entryIndex = -1;
+            int wrapper(SerializableType type, int index)
+            {
+                string _key = GetKeyByIndex(index, type);
+                if (_key == key)
+                {
+                    entryIndex = counter;
+                }
+                counter++;
+                return 0;
+            }
+            MapOverData(wrapper);
+            return exposeToLLM[entryIndex];
         }
 
         /// <summary>
