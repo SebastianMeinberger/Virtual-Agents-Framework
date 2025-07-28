@@ -12,10 +12,12 @@ namespace i5.VirtualAgents.BehaviourTrees.Visual
     [CreateAssetMenu(menuName = "Virtual Agents Framework/Behaviour Tree")]
     public class BehaviourTreeAsset : ScriptableObject
     {
+        public string description;
         [SerializeField]
         private VisualNode rootNode;
         public List<VisualNode> Nodes = new List<VisualNode>();
         public event Action CreatedAndNamed;
+
 
 #if UNITY_EDITOR
         private void OnEnable()
