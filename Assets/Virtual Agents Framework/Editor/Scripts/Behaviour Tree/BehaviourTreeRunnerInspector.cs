@@ -100,7 +100,7 @@ namespace i5.VirtualAgents.Editor
                 SerializedProperty serializedArray = serializedObject.FindProperty("nodesOverwriteData.data");
                 serializedNodeOverwriteData = serializedArray.GetArrayElementAtIndex(entryIndex).FindPropertyRelative("Value");
                 // Check integrity
-                if(view.node.CheckIntegrity(nodesData[entryIndex].Value) || forceReset)
+                if(!view.node.CheckIntegrity(nodesData[entryIndex].Value) || forceReset)
                 {
                     serializedArray.DeleteArrayElementAtIndex(entryIndex);
                     serializedObject.ApplyModifiedProperties();
@@ -122,86 +122,30 @@ namespace i5.VirtualAgents.Editor
 
         private SerializedProperty CreateNodeOverwriteData(NodeView view)
         {
-            SerializedProperty nodesData = serializedObject.FindProperty("nodesOverwriteData.data");
-            int size = nodesData.arraySize;
-            nodesData.InsertArrayElementAtIndex(size); // Insert a new entry at the end
-            var entry = nodesData.GetArrayElementAtIndex(size);
-            entry.FindPropertyRelative("Key").stringValue = view.node.Guid;
-            SerializedProperty nodeOverwriteData = entry.FindPropertyRelative("Value");
-
-            // Copies all data from the serializationData List origin into the serialized serializationData array destination
-            void CopySerializedData<T>(List<SerializationEntry<T>> origin, string destinationPath)
+            BehaviourTreeRunner runner = target as BehaviourTreeRunner;
+            SerializationDataContainer data = view.node.Data;
+            SerializationDataContainer serializer = new()
             {
-                SerializedProperty destination = nodeOverwriteData.FindPropertyRelative(destinationPath);
-                // Needs to be cleared first, since it contains the copied values from the previous entry, due to InsertArrayElementAtIndex not working as described in the documentation
-                destination.ClearArray();
-                for (int i = 0; i < origin.Count; i++)
-                {
-                    SerializationEntry<T> data = origin[i];
-                    destination.InsertArrayElementAtIndex(i); //Make space for the new data entry in the serialized array
-                    SerializedProperty arrayElement = destination.GetArrayElementAtIndex(i);
+                serializationOrder = new(data.serializationOrder),
+                exposeToLLM = new(data.exposeToLLM),
+                serializedAudioClips = new(data.serializedAudioClips.data),
+                serializedStrings = new(data.serializedStrings.data),
+                serializedGameobjects = new(data.serializedGameobjects.data),
+                serializedTrees = new(data.serializedTrees.data),
+                serializedBools = new(data.serializedBools.data),
+                serializedAudioSources = new(data.serializedAudioSources.data),
+                serializedFloats = new(data.serializedFloats.data),
+                serializedInts = new(data.serializedInts.data),
+                serializedListFloats = new(data.serializedListFloats.data),
+                serializedQuaternions = new(data.serializedQuaternions.data),
+                serializedVectors = new(data.serializedVectors.data)
+            };
 
-                    // Copy key and data
-                    arrayElement.FindPropertyRelative("Key").stringValue = data.Key;
-                    SerializedProperty value = arrayElement.FindPropertyRelative("Value");
-                    if (typeof(T) == typeof(Vector3))
-                    {
-                        value.vector3Value = (Vector3)(data.Value as Vector3?); // This is necessary, since direct cast can't be used because T is not constrained to inherit from Vector3 and the as operator
-                                                                                // can only be used on nullable types. Therefore the conversion to the nullable type Vector3? which is then casted to the actual Vector3 type
-                    }
-                    else if (typeof(T) == typeof(float))
-                    {
-                        value.floatValue = (float)(data.Value as float?);
-                    }
-                    else if (typeof(T) == typeof(string))
-                    {
-                        value.stringValue = data.Value as string;
-                    }
-                    else if (typeof(T) == typeof(int))
-                    {
-                        value.intValue = (int)(data.Value as int?);
-                    }
-                    else if (typeof(T) == typeof(GameObject))
-                    {
-                        value.objectReferenceValue = data.Value as GameObject;
-                    }
-                    else if (typeof(T) == typeof(bool))
-                    {
-                        value.boolValue = (bool)(data.Value as bool?);
-                    }
-                    else if (typeof(T) == typeof(List<float>))
-                    {
-                        List<float> floatList = data.Value as List<float>;
-                        for (int j = 0; j < floatList.Count; j++)
-                        {
-                            value.InsertArrayElementAtIndex(j);
-                            value.GetArrayElementAtIndex(j).floatValue = floatList[j];
-                        }
-                    }
-                    else if (typeof(T) == typeof(BehaviourTreeAsset))
-                    {
-                        value.objectReferenceValue = data.Value as BehaviourTreeAsset;
-                    }
-                    else
-                    {
-                        throw new NotImplementedException(typeof(T) + " has no copy handler");
-                    }
+            runner.nodesOverwriteData.Add(view.node.Guid, serializer);
+            serializedObject.Update();
 
-                }
-            }
-
-            // Copy the serialization data from the node to the newly created nodesData
-            var d = view.node.Data;
-            CopySerializedData(d.serializedVectors.data, "serializedVectors.data");
-            CopySerializedData(d.serializedFloats.data, "serializedFloats.data");
-            CopySerializedData(d.serializedStrings.data, "serializedStrings.data");
-            CopySerializedData(d.serializedInts.data, "serializedInts.data");
-            CopySerializedData(d.serializedGameobjects.data, "serializedGameobjects.data");
-            CopySerializedData(d.serializedBools.data, "serializedBools.data");
-            CopySerializedData(d.serializedListFloats.data, "serializedListFloats.data");
-            CopySerializedData(d.serializedTrees.data, "serializedTrees.data");
-
-            return nodeOverwriteData;
+            int size = runner.nodesOverwriteData.data.Count;
+            return serializedObject.FindProperty("nodesOverwriteData.data").GetArrayElementAtIndex(size - 1).FindPropertyRelative("Value");
         }
 
         // Creates a property field of the provided type for the serialized data saved in the array with the name propertyName
