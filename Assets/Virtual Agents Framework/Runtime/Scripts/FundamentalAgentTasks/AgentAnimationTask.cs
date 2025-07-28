@@ -8,12 +8,12 @@ namespace i5.VirtualAgents.AgentTasks
     /// </summary>
     public class AgentAnimationTask : AgentBaseTask, ISerializable
     {
-        private Animator animator;
-        private string startTrigger;
-        private string stopTrigger;
-        private float playTime;
-        private GameObject aimTarget;
-        private string layer;
+        protected Animator animator;
+        protected string startTrigger;
+        protected string stopTrigger;
+        protected float playTime;
+        protected GameObject aimTarget;
+        protected string layer;
 
         AimAt aimScript;
 
@@ -93,7 +93,7 @@ namespace i5.VirtualAgents.AgentTasks
                     lookAroundController.Activate();
                 }
             }
-            animator.SetTrigger(stopTrigger != "" ? stopTrigger : startTrigger);
+            animator.SetTrigger(stopTrigger != null && stopTrigger != "" ? stopTrigger : startTrigger);
         }
 
         // wait for the given time and then finish the task
@@ -126,7 +126,7 @@ namespace i5.VirtualAgents.AgentTasks
             }
         }
 
-        public void Serialize(SerializationDataContainer serializer)
+        public virtual void Serialize(SerializationDataContainer serializer)
         {
             serializer.AddSerializedData("Start Trigger", startTrigger);
             serializer.AddSerializedData("Stop Trigger", stopTrigger);
@@ -135,7 +135,7 @@ namespace i5.VirtualAgents.AgentTasks
             serializer.AddSerializedData("Layer", layer);
         }
 
-        public void Deserialize(SerializationDataContainer serializer)
+        public virtual void Deserialize(SerializationDataContainer serializer)
         {
             startTrigger = serializer.GetSerializedString("Start Trigger");
             stopTrigger = serializer.GetSerializedString("Stop Trigger");
