@@ -85,9 +85,13 @@ namespace i5.VirtualAgents.AgentTasks
                 // Current data
                 SerializationDataContainer oldData = overwriteData == null ? Data : overwriteData;
                 ISerializable copy = DeserializeType();
+                if (copy is BehaviourTreeTask)
+                {
+                    return true;
+                }
 
                 // Data resulting from serializing again
-                SerializationDataContainer newData = new SerializationDataContainer();
+                    SerializationDataContainer newData = new SerializationDataContainer();
                 List<string> newDataKeys = new List<string>();
                 copy.Serialize(newData);
 
