@@ -11,7 +11,8 @@ namespace i5.VirtualAgents.AgentTasks
         public void ChangeSprite(string name)
         {
             var renderer = GetComponent<SpriteRenderer>();
-            renderer.sprite = sprites.Find( (s) => s.name ==  name);
+            string name_without_ext = name.Split(".")[0];
+            renderer.sprite = sprites.Find( (s) => s.name ==  name_without_ext);
         }
 
         // Start is called before the first frame update
